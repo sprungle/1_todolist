@@ -14,7 +14,11 @@ const port = 3001;
 
 //define routes which are handled by the servers
 app.get("/",async function (req,res){
-    try {
+    const connection = await mysql.createConnection(config.db)
+    res.status(200).send('test')
+
+
+     /*    try {
         const connection = await mysql.createConnection(config.db)
         const [result,] = await connection.execute('select * from task')
         // return 200 status (ok) on JSON
@@ -27,8 +31,8 @@ app.get("/",async function (req,res){
         // res.status(500).send(err.message)
         res.status(500).json({error: err.message})
 
-    }
-}
-)
+    }*/
+
+})
 
 app.listen(port)
